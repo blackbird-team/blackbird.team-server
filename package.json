@@ -1,0 +1,45 @@
+{
+  "name": "blackbird.team-server",
+  "version": "0.0.1",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prod": "webpack --define process.env.NODE_ENV='\"production\"' --config ./webpack.prod.config.js",
+    "start-dev": "babel-node source/js/index.js",
+    "start": "node ./build/main.min.js",
+    "lint:js": "eslint ./source/js --ext .jsx --ext .js",
+    "lint-staged": "lint-staged"
+  },
+  "pre-commit": "lint-staged",
+  "lint-staged": {
+    "*.js": "eslint"
+  },
+  "dependencies": {
+    "bbt-loader": "^1.0.9",
+    "express": "^4.16.1",
+    "express-subdomain": "^1.0.5",
+    "fs": "0.0.1-security",
+    "http": "0.0.0",
+    "path": "^0.12.7",
+    "serve-favicon": "^2.4.5"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-minify-webpack-plugin": "^0.2.0",
+    "babel-plugin-root-import": "^5.1.0",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-preset-env": "^1.6.0",
+    "clean-webpack-plugin": "^0.1.17",
+    "eslint": "^4.8.0",
+    "eslint-config-bbt": "^1.0.0",
+    "json-loader": "^0.5.7",
+    "lint-staged": "^4.2.3",
+    "pre-commit": "^1.2.2",
+    "prettier": "^1.7.3",
+    "webpack": "^3.6.0",
+    "webpack-bundle-analyzer": "^2.9.0"
+  }
+}
