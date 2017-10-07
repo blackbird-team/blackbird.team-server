@@ -16,6 +16,7 @@
     "*.js": "eslint"
   },
   "dependencies": {
+    "babel-preset-bbt": "0.0.5",
     "bbt-loader": "^1.0.9",
     "express": "^4.16.1",
     "express-subdomain": "^1.0.5",
@@ -29,9 +30,6 @@
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
     "babel-minify-webpack-plugin": "^0.2.0",
-    "babel-plugin-root-import": "^5.1.0",
-    "babel-plugin-transform-class-properties": "^6.24.1",
-    "babel-preset-env": "^1.6.0",
     "clean-webpack-plugin": "^0.1.17",
     "eslint": "^4.8.0",
     "eslint-config-bbt": "^1.0.0",

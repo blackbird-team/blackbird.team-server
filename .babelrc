@@ -1,20 +1,11 @@
 {
-  "presets" : [["env", {
-    "targets": {
-      "node": true
-    }
-  }]],
-  "plugins": [
-    ["transform-class-properties"],
-    ["babel-plugin-root-import",
-      [{
-        "rootPathPrefix": "~",
-        "rootPathSuffix": "source/js"
-      },
-        {
-          "rootPathPrefix": "@",
-          "rootPathSuffix": "source/data"
-        }]
+  "presets" : [
+    ["bbt",
+      {
+        "targets": {
+          "node": true
+        }
+      }
     ]
   ]
 }
