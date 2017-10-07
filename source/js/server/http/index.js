@@ -3,13 +3,14 @@ import express from "express";
 import { resolve } from "path";
 import Config from "@/config.default";
 import HttpServerMiddleware from "./middlewares";
-import TechSubdomain from "./subdomains/tech";
+import Subdomain from "./subdomains";
 
 class HttpServer {
 	app = express();
 	server = createServer(this.app);
 	subdomain = {
-		tech: new TechSubdomain({ app: this.app })
+		tech: new Subdomain({ app: this.app, name: "tech" }),
+		manufactura: new Subdomain({ app: this.app, name: "manufactura" })
 	};
 	middlewares = new HttpServerMiddleware({ app: this.app });
 
@@ -46,6 +47,7 @@ class HttpServer {
 
 	initSubdomains() {
 		this.subdomain.tech.init();
+		this.subdomain.manufactura.init();
 	}
 
 	initGetHandlers() {
