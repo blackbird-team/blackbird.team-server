@@ -1,43 +1,56 @@
 {
   "name": "blackbird.team-server",
-  "version": "0.0.1",
-  "main": "index.js",
+  "version": "0.0.2",
+  "main": "build/index.min.js",
   "license": "MIT",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "prod": "webpack --define process.env.NODE_ENV='\"production\"' --config ./webpack.prod.config.js",
-    "start-dev": "babel-node source/js/index.js",
-    "start": "node ./build/main.min.js",
-    "lint:js": "eslint ./source/js --ext .jsx --ext .js",
-    "lint-staged": "lint-staged"
-  },
-  "pre-commit": "lint-staged",
-  "lint-staged": {
-    "*.js": "eslint"
+    "prod": "webpack --config ./webpack.prod.config.js",
+    "start": "node build/index.min.js ",
+    "start:babel": "babel-node --extensions \".js\",\".ts\" source/ts/index.ts",
+    "start:dev": "nodemon -e ts --exec npm run start:babel",
+    "tsc": "tsc --noEmit true"
   },
   "dependencies": {
-    "babel-preset-bbt": "0.0.5",
-    "bbt-loader": "^1.0.9",
-    "express": "^4.16.1",
+    "body-parser": "^1.18.2",
+    "express": "^4.16.3",
     "express-subdomain": "^1.0.5",
-    "fs": "0.0.1-security",
-    "http": "0.0.0",
-    "path": "^0.12.7",
+    "mkdirp": "^0.5.1",
+    "moment": "^2.21.0",
+    "mongoose": "^5.0.11",
     "serve-favicon": "^2.4.5"
   },
   "devDependencies": {
-    "babel-cli": "^6.26.0",
+    "@babel/core": "^7.0.0-beta.42",
+    "@babel/node": "^7.0.0-beta.42",
+    "@babel/plugin-proposal-class-properties": "^7.0.0-beta.42",
+    "@babel/preset-env": "^7.0.0-beta.42",
+    "@babel/preset-typescript": "^7.0.0-beta.42",
+    "@types/express": "^4.11.1",
+    "@types/mkdirp": "^0.5.2",
+    "@types/mongoose": "^5.0.7",
+    "@types/node": "^9.6.0",
     "babel-core": "^6.26.0",
-    "babel-loader": "^7.1.2",
-    "babel-minify-webpack-plugin": "^0.2.0",
-    "clean-webpack-plugin": "^0.1.17",
-    "eslint": "^4.8.0",
-    "eslint-config-bbt": "^1.0.0",
+    "babel-loader": "^8.0.0-beta.2",
+    "babel-plugin-module-resolver": "^3.1.1",
     "json-loader": "^0.5.7",
-    "lint-staged": "^4.2.3",
-    "pre-commit": "^1.2.2",
-    "prettier": "^1.7.3",
-    "webpack": "^3.6.0",
-    "webpack-bundle-analyzer": "^2.9.0"
-  }
+    "prettier": "^1.11.1",
+    "ts-loader": "^4.1.0",
+    "tslint": "^5.9.1",
+    "tslint-config-prettier": "^1.10.0",
+    "typescript": "^2.7.2",
+    "webpack": "^4.2.0",
+    "webpack-cli": "^2.0.13"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/blackbird-team/blackbird.team-server.git"
+  },
+  "keywords": [],
+  "author": "Black Bird Team",
+  "bugs": {
+    "url": "https://github.com/blackbird-team/blackbird.team-server/issues"
+  },
+  "homepage": "https://github.com/blackbird-team/blackbird.team-server#readme",
+  "description": "Backend http://blackbird.team/"
 }

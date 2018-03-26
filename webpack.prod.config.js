@@ -1,7 +1,5 @@
-/*	eslint import/no-extraneous-dependencies:0	*/
-const MinifyPlugin = require("babel-minify-webpack-plugin");
-const CleanWebpackPlugin = require("clean-webpack-plugin");
 const fs = require("fs");
+const path = require("path");
 
 const nodeModules = {};
 fs
@@ -11,28 +9,31 @@ fs
 		nodeModules[mod] = `commonjs ${mod}`;
 	});
 
-module.exports = {
+const loaders = {
+	js: (isBackEnd = false) => ({
+		test: /\.tsx?$/,
+		exclude: isBackEnd ? /\/node_modules\// : [],
+		use: ["babel-loader", "ts-loader"]
+	}),
+	json: {
+		test: /\.json$/,
+		use: "json-loader"
+	}
+};
+
+module.exports ={
 	target: "node",
-	devtool: "source-map",
+	mode: "production",
 	externals: nodeModules,
-	context: `${__dirname}/source/js/`,
-	entry: [`${__dirname}/source/js/index.js`],
+	entry: [`${__dirname}/source/ts/index.ts`],
+	resolve: {
+		extensions: [ '.ts', '.js' ]
+	},
 	output: {
 		path: `${__dirname}/build/`,
-		filename: "main.min.js"
+		filename: `index.min.js`
 	},
 	module: {
-		rules: [
-			{
-				test: /\.jsx?/,
-				exclude: /\/node_modules\//,
-				use: "babel-loader"
-			},
-			{
-				test: /\.json$/,
-				use: "json-loader"
-			}
-		]
-	},
-	plugins: [new CleanWebpackPlugin([`${__dirname}/build/`]), new MinifyPlugin()]
+		rules: [loaders.js(true), loaders.json]
+	}
 };

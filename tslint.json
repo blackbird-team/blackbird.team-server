@@ -1,0 +1,10 @@
+{
+	"extends": ["tslint-config-prettier"],
+	"rules": {
+		"no-implicit-dependencies": false,
+		"no-submodule-imports": [true, "srv", "@ltypes"]
+	},
+	"rulesEslint": {
+		"indent": [2, "tab", { "SwitchCase": 1 }]
+	}
+}
