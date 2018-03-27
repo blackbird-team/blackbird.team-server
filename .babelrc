@@ -13,7 +13,7 @@
     ['module-resolver', {
       //			root: ['./source'],
       alias: {
-        'srv': './source/server/ts/'
+        'srv': './source/ts/'
       }
     }]
   ]
